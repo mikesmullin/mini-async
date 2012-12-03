@@ -1,11 +1,13 @@
-# Mini-Async.js
+var async, count, delay;
 
-Minimalist asynchronous javascript flow control in 34 lines.
-Inspired by [async](https://github.com/caolan/async) library.
+sync = require('mini-async');
 
-## Quick Examples
+delay = function(f) {
+  return setTimeout(f, Math.random() * 100 * Math.random() * 10);
+};
 
-```javascript
+console.log("series started.");
+
 async.series([
   function(next, err, result) {
     return delay(function() {
@@ -33,6 +35,8 @@ async.series([
   return console.log(["series complete.", next, err, result]);
 });
 
+console.log("parallel started.");
+
 async.parallel([
   function(next) {
     return delay(function() {
@@ -55,6 +59,10 @@ async.parallel([
   return console.log(["parallel complete.", err]);
 });
 
+console.log('start whilst');
+
+count = 0;
+
 async.whilst((function() {
   console.log('my a');
   return count < 5;
@@ -65,4 +73,3 @@ async.whilst((function() {
 }), (function(err) {
   console.log('my c');
 }));
-```

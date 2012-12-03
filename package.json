@@ -1,0 +1,30 @@
+{
+  "name": "mini-async",
+  "version": "0.0.1",
+  "description": "Minimalist asynchronous javascript flow control",
+  "main": "mini-async.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikesmullin/mini-async.git"
+  },
+  "keywords": [
+    "miniature",
+    "minimalist",
+    "async",
+    "asynchronous",
+    "async.js",
+    "flow",
+    "control",
+    "javascript",
+    "library"
+  ],
+  "author": "Mike Smullin <mike@smullindesign.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
