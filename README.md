@@ -3,6 +3,11 @@
 Minimalist asynchronous javascript flow control in 34 lines.
 Inspired by [async](https://github.com/caolan/async) library.
 
+# NOTICE
+
+After I wrote this, I felt I had a good understanding of async and decided to write an improved version based on its minimalist approach.
+Check out [Async2](https://github.com/mikesmullin/async2).
+
 ## Quick Examples
 
 ```javascript
@@ -66,3 +71,27 @@ async.whilst((function() {
   console.log('my c');
 }));
 ```
+
+Another way to do serial or waterfall without libs is like so:
+
+```coffeescript
+an_async_task = (cb) ->
+  serial = (err) ->
+    return cb err if err
+    # do something
+    next err, result
+  next = (err, result) ->
+    return cb err if err
+    # do something
+    finally err
+  finally = (err, result) ->
+    return cb err if err
+    # do something
+    cb err
+  serial null
+```
+
+TODO
+----
+
+* Conform to node.js callback standard (err, result). Right now its transposed because I [erroneously] thought it was better. Wouldn't take much to add that.
