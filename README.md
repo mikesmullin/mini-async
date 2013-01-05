@@ -72,7 +72,7 @@ async.whilst((function() {
 }));
 ```
 
-Another way to do serial or waterfall without libs is like so:
+Another way to do serial or waterfall (in coffeescript) without libs is like so:
 
 ```coffeescript
 an_async_task = (cb) ->
@@ -87,11 +87,11 @@ an_async_task = (cb) ->
   done = (err, result) ->
     return cb err if err
     # do something
-    cb err
+    cb null, result
   serial null
 ```
 
-or parallel without libs:
+or parallel (in coffeescript) without libs:
 
 ```coffeescript
 an_async_task = (cb) ->
@@ -105,7 +105,7 @@ an_async_task = (cb) ->
     return cb err if err
     unless --count
       # do something
-      cb err
+      cb null, result
   count = 2
   parallel1()
   parallel2()
