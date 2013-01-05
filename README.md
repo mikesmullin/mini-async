@@ -83,12 +83,32 @@ an_async_task = (cb) ->
   next = (err, result) ->
     return cb err if err
     # do something
-    finally err
-  finally = (err, result) ->
+    done err
+  done = (err, result) ->
     return cb err if err
     # do something
     cb err
   serial null
+```
+
+or parallel without libs:
+
+```coffeescript
+an_async_task = (cb) ->
+  parallel1 = ->
+    # do something
+    done err
+  parallel2 = ->
+    # do something
+    done err
+  done = (err) ->
+    return cb err if err
+    unless --count
+      # do something
+      cb err
+  count = 2
+  parallel1()
+  parallel2()
 ```
 
 TODO
